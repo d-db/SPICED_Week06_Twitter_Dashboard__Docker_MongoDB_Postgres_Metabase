@@ -1,0 +1,5 @@
+pymongo
+tweepy==4.4.0
+dnspython
+text2emotion
+emoji==1.7.0

@@ -1,43 +1,46 @@
-# SPICED Week08: Predicting the amount of customers and their movement within a supermarket using a 'Monte-Carlo-Markov-Chain' and 'Object Orientated Programming'
+# SPICED Week06: Extracting, storing, analyzing tweets of @TheDemocrats and @GOP in the run-up to the midterms 2022 using the Python, MongoDB, Postgres and Metabase.
 
 ## Project Summary
 
-In this project I predicted the number of customers and their movement within the DOODL Supermarket. The supermarket has four aisles (fruit, spices, dairy, drinks) and one checkout. To do the prediction, I calculated a 'Transition Probability Matrix' based on historical data of customer movements within the supermarket using a 'Monte Carlo Markov Chain'.
+<img width="624" alt="Bildschirmfoto 2022-12-25 um 21 01 42" src="https://user-images.githubusercontent.com/61935581/209559691-b9aad335-ffde-45af-90d5-29f244fdc068.png">
 
-The customer movements are calculated every minute, graphically animated and stored in the file ./data/customer.csv.
+In this project, I build a data pippeline that collect tweets of @TheDemocrats and @GOP and stores them in a MongoDB. Next, the sentiment of tweets is analyzed using the two Python libraries "vaderSentiment"/"test2emotion" and the results are stored in a Postgres database. Finally, the findings of the analysis are clearly presented with the help of a Metabase dashboard.
 
-## Demonstration Video
+Steps to achieve the project goal:
+- Install Docker
+- Build a data pipeline with docker-compose
+- Collect Tweets
+- Store Tweets in Mongo DB
+- Create an ETL job transporting data from MongoDB to PostgreSQL
+- Run sentiment analysis on the tweets
+- Display the findings of the analysis with the help of a Metabase dashboard
 
-https://user-images.githubusercontent.com/61935581/209478840-efb8b7ef-0592-4395-ac88-26dc0c6492e8.mp4
+## Documentation
 
-Graphic representation of the supermarket
+Structure of the Dockerfile
 
-![Bildschirmfoto 2022-12-25 um 19 53 35](https://user-images.githubusercontent.com/61935581/209479227-0de17873-4045-46b7-beec-4cd39be95cb7.png)
+![Dockerfile](https://user-images.githubusercontent.com/61935581/209560176-9ee88da6-5b68-413d-bafc-be86771a2892.png)
 
-## Installation
+Dashboard on Metabase presenting the results of the sentiment analysis.
 
-Clone the repository and create a new virtual environment
+![Docker](https://user-images.githubusercontent.com/61935581/209560268-99cb2798-fcb0-4fc1-88fd-589f1a797d64.png)
 
-```bash
-python3 -m venv envname # to create the virtual env
-source envname/bin/activate # activate it
-```
 
-Afterwards install the libraries specified in requirements.txt
+## Installation of Docker
 
-```bash
-pip install -r requirements.txt
-```
+Go to [Docker homepage](https://docs.docker.com/get-docker/) and download Docker for your operating system.
 
 ## Usage
 
-The project has several components:
+Clone the repository and navigate in your terminal to the cloned folder.
+Execute the follwing commands in your terminal:
 
-- The jupyter notebook '1_EDA.ipynb' merges the historical data and applies extensive 'data preprocessing'.
-- '2_Graphics.ipynb' includes a few graphical analyses of the merged and preprocessed data set.
-- '3_probability_matrix.ipynb' contains the central 'transition probability matrix' on the basis of which the movement of customers is estimated.
-- 'supermarket_class.py' and 'customer_class.py' contains the classes for the supermarket and the customers according to OOP.
-- The simulation can be started via 'main.py'. The graphical representation starts automatically. In addition, the customers and their movements are stored in the file './data/customers.csv'.
+```bash
+docker-compose build
+docker-compose up
+```
+
+Afterwards, you can log-in to Metabase on your local machine and design the dashboard accoring to your liking.
 
 ## Contributing
 
